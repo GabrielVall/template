@@ -15,8 +15,13 @@ $("#miFormulario").submit(function(e) {
     url: "insertar.php",
     data: datos,
     // Cuando la respuesta del servidor es recibida con éxito, ejecuta esta función
-    success: function(response) {
+    success: function(respuesta) {
       // Aquí se debe manejar la respuesta del servidor, como actualizar el DOM con los datos recibidos
+      if(respuesta.estado === 'completado'){
+        alert('Registro insertado correctamente');
+      }else{
+        alert('Error al comunicarse con la base de datos');
+      }
     }
   });
 });
