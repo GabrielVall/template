@@ -9,7 +9,7 @@ $("#miFormulario").submit(function(e) {
   e.preventDefault();
   // Serializa los datos del formulario en una cadena de consulta (query string)
   var datos = $(this).serialize();
-  // Hace una llamada AJAX a "mi_script.php" utilizando el método HTTP POST y envía los datos serializados
+  // Hace una llamada AJAX a "insertar.php" utilizando el método HTTP POST y envía los datos serializados
   $.ajax({
     type: "POST",
     url: "insertar.php",
