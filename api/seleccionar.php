@@ -6,6 +6,6 @@
 
   include_once 'conexion.php';
   $sql = new SQLConexion();
-  $consulta = $sql -> seleccionar("SELECT * FROM proyectos ORDER BY id DESC LIMIT 0,10 ");
+  $consulta = $sql -> seleccionar("SELECT * FROM proyectos ORDER BY id DESC");
   echo json_encode($consulta);
 ?>

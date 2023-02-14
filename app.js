@@ -1,5 +1,5 @@
 function actualizar(){
-  fetch('api/proyectos.php').then(response => response.json()).then(datos => {
+  fetch('api/seleccionar.php').then(response => response.json()).then(datos => {
     let html = "";
     let ancho = datos.length;
     if(ancho > 0){
@@ -35,20 +35,41 @@ function actualizar(){
       `;
     }
     document.getElementById('tabla_proyectos').innerHTML = html;
+    $('#data_table').DataTable();
   });
 }
 actualizar();
-setInterval(actualizar,1000);
+// setInterval(actualizar,1000);
 
 $(document).on("click",'#eliminar',function(){
   let id = $(this).data('id');
-  $.ajax({
-    type: 'GET',
-    url:'api/eliminar.php?id=' + id,
-    success(){
-      actualizar();
-    } 
-  }); 
+  Swal.fire({
+    title: '¿Estas seguro?',
+    text: "Esta acción no se puede deshacer",
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Confirmar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        type: 'GET',
+        url:'api/eliminar.php?id=' + id,
+        success(){
+          Swal.fire({
+            position: 'top-end',
+            icon: 'info',
+            title: 'Registro eliminado correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          actualizar();
+        } 
+      }); 
+    }
+  })
+  
 });
 $(document).on("click",'#insertar',function(){
   

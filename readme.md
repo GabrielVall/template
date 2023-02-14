@@ -2,9 +2,17 @@
 # CRUD con Jquery & Ajax
 
 ##### Insertar datos
+###### Librerias del proyecto
+* Jquery (Ajax) +
+* Flatpickr +
+* ApexCharts (o chartsjs) 
+* DataTables +
+* SweetAlert2 (o alertify) +
+* (php) fpdf (para hacer pdfs)
+* 
 ```javascript
 // Selecciona el formulario con el id "miFormulario" y espera a que se envíe
-$("#miFormulario").submit(function(e) {
+$(document).on("submit","#miFormulario", function(e){
   // Previene que el formulario se envíe normalmente
   e.preventDefault();
   // Serializa los datos del formulario en una cadena de consulta (query string)
